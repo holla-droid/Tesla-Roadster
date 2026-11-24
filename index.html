@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roadster | Tesla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tesla-red: #cc0000;
+      --bg: #000;
+      --text: #fff;
+      --muted: #8e8e8e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-right a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 24px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 80px;
+      background: #000 url('https://superchargeddaily.com/assets/roadster-studio/finale-1920w.webp') center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 12vw, 7rem);
+      font-weight: 600;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin: 32px 0 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .stat span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--tesla-red);
+      color: white;
+      border: none;
+      padding: 12px 40px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: #e60000; }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      margin-left: 12px;
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 100px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 50px;
+      font-size: 1.05rem;
+    }
+
+    /* Full-width image blocks */
+    .full-image {
+      width: 100%;
+      height: 70vh;
+      min-height: 480px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .full-image .caption {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      right: 40px;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    .full-image .caption h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* Trims */
+    .trims {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .trim-card {
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #222;
+    }
+
+    .trim-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .trim-body {
+      padding: 28px;
+    }
+
+    .trim-body h3 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .trim-body .tag {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .trim-body ul {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .trim-body li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 0.95rem;
+    }
+
+    .deposit {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .deposit small {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    /* Specs table */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .specs-table th,
+    .specs-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid #222;
+    }
+
+    .specs-table th {
+      color: var(--muted);
+      font-weight: 500;
+      width: 40%;
+    }
+
+    /* Reservation */
+    .reserve-box {
+      max-width: 520px;
+      margin: 0 auto;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px 16px;
+      background: #000;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: white;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--tesla-red);
+    }
+
+    .disclaimer {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 24px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-stats { gap: 24px; }
+      .stat strong { font-size: 1.5rem; }
+      .btn-outline { margin-left: 0; margin-top: 12px; }
+      .full-image { height: 50vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="logo">TESLA</div>
+    <div class="nav-right">
+      <a href="#trims">Trims</a>
+      <a href="#specs">Specs</a>
+      <a href="#reserve">Reserve</a>
+    </div>
+  </nav>
+
+  <!-- HERO - matches original Tesla style -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Roadster</h1>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>&lt;1.6 s</strong>
+          <span>0-60 mph</span>
+        </div>
+        <div class="stat">
+          <strong>300+ mi</strong>
+          <span>Range</span>
+        </div>
+        <div class="stat">
+          <strong>230+ mph</strong>
+          <span>Top Speed</span>
+        </div>
+      </div>
+      <div>
+        <a href="#reserve" class="btn">Reserve Now</a>
+        <a href="#trims" class="btn btn-outline">View Trims</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dramatic full-width image -->
+  <div class="full-image" style="background-image: url('https://electronmotion.com/wp-content/uploads/2026/10/tesla-roadster-flying-over-lineup-1920.jpg');">
+    <div class="caption">
+      <h2>Beyond Physics</h2>
+      <p>Cold-gas thrusters. Active aero. Multi-mode suction. The quickest production car ever made.</p>
+    </div>
+  </div>
+
+  <!-- Trims -->
+  <section id="trims">
+    <h2 class="section-title">Choose Your Configuration</h2>
+    <p class="section-sub">Performance is available for reservation. Thrust is limited. Rocket is invite-only.</p>
+
+    <div class="trims">
+      <!-- Performance -->
+      <div class="trim-card">
+        <img src="https://superchargeddaily.com/assets/roadster-studio/finale-1920w.webp" alt="Tesla Roadster Performance - studio white">
+        <div class="trim-body">
+          <h3>Performance</h3>
+          <div class="tag">Road Ready · 2 seats</div>
+          <ul>
+            <li><span>0-60 mph</span> <span>&lt; 1.6 s</span></li>
+            <li><span>Thrusters</span> <span>None</span></li>
+            <li><span>Active Aero + Suction</span> <span>Yes</span></li>
+            <li><span>Road Legal</span> <span>Yes</span></li>
+          </ul>
+          <div class="deposit">$50,000 <small>Fully refundable deposit</small></div>
+          <button class="btn" style="width:100%" onclick="selectTrim('Performance')">Select</button>
+        </div>
+      </div>
+
+      <!-- Thrust -->
+      <div class="trim-card">
+        <img src="https://www.reuters.com/resizer/v2/EP7IZC4E5VKGLGNTHMX4UBB7OM.jpg?auth=d8a0b34256182117d505d5b9d97a47797efd303e47c56ea180e3aa1363e958a7&height=1005&width=1920&quality=80&smart=true" alt="Tesla Roadster Thrust in flight">
+        <div class="trim-body">
+          <h3>Thrust</h3>
+          <div class="tag">Race Ready · Limited</div>
+          <ul>
+            <li><span>0-60 mph</span> <span>&lt; 0.9 s</span></li>
+            <li><span>Thrusters</span> <span>4 rear cold-gas</span></li>
+            <li><span>Active Aero + Suction</span> <span>Yes</span></li>
+            <li><span>Road Legal</span> <span>Intended</span></li>
+          </ul>
+          <div class="deposit">$250,000 <small>Fully refundable deposit</small></div>
+          <button class="btn" style="width:100%" onclick="selectTrim('Thrust')">Select</button>
+        </div>
+      </div>
+
+      <!-- Rocket -->
+      <div class="trim-card">
+        <img src="https://techcrunch.com/wp-content/uploads/2026/10/tesla-roadster-2-fly.jpg?resize=1200,877" alt="Tesla Roadster Rocket mid-air">
+        <div class="trim-body">
+          <h3>Rocket</h3>
+          <div class="tag">Air Ready · Invite Only</div>
+          <ul>
+            <li><span>0-60 mph</span> <span>&lt; 0.59 s</span></li>
+            <li><span>Thrusters</span> <span>10 cold-gas</span></li>
+            <li><span>Flight System</span> <span>Full</span></li>
+            <li><span>Road Legal</span> <span>No</span></li>
+          </ul>
+          <div class="deposit">Invite Only <small>Not publicly available</small></div>
+          <button class="btn" style="width:100%; opacity:0.5; cursor:not-allowed;" disabled>By Invitation</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Another full image -->
+  <div class="full-image" style="background-image: url('https://carglossary.com/media/cars/Tesla/roadster/HVagHRRXUAA7kaq.jpg');">
+    <div class="caption">
+      <h2>Designed for the Extremes</h2>
+      <p>Angular aerospace form language inspired by the SR-71 and F-35. Hidden headlights. Full-width light bar. Active rear wing.</p>
+    </div>
+  </div>
+
+  <!-- Specs -->
+  <section id="specs">
+    <h2 class="section-title">Specifications</h2>
+    <p class="section-sub">Preliminary figures from the October 2026 reveal. Final production specifications subject to change.</p>
+
+    <table class="specs-table">
+      <tr><th>Power</th><td>Over 1 MW (≈ 1,341 hp)</td></tr>
+      <tr><th>Range</th><td>Over 300 miles</td></tr>
+      <tr><th>Top Speed</th><td>Over 230 mph</td></tr>
+      <tr><th>0-60 mph</th><td>Under 1.6 s (Performance) · Under 0.9 s (Thrust) · Under 0.59 s (Rocket)</td></tr>
+      <tr><th>Drive</th><td>Rear-wheel drive, dual motor, torque vectoring</td></tr>
+      <tr><th>Battery</th><td>High-voltage architecture (800–1000 V)</td></tr>
+      <tr><th>Production</th><td>Target 2028 · Giga Texas</td></tr>
+      <tr><th>Price</th><td>Not yet announced</td></tr>
+    </table>
+  </section>
+
+  <!-- Reservation -->
+  <section id="reserve" style="background:#0a0a0a; padding:100px 24px;">
+    <h2 class="section-title">Reserve Your Roadster</h2>
+    <p class="section-sub">Secure your place in line. Deposits are fully refundable until a final vehicle purchase agreement is signed.</p>
+
+    <div class="reserve-box">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Configuration</label>
+          <select id="trim" required>
+            <option value="">Select configuration</option>
+            <option value="Performance">Performance — $50,000 deposit</option>
+            <option value="Thrust">Thrust — $250,000 deposit</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="name" required placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" required placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>Country</label>
+          <select id="country" required>
+            <option value="">Select country</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="UK">United Kingdom</option>
+            <option value="AE">United Arab Emirates</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button type="submit" class="btn" style="width:100%; margin-top:10px;">Continue</button>
+        <p class="disclaimer">
+          This is a conceptual demonstration only. No real payment is processed and no reservation is created.  
+          Official reservations are available exclusively on Tesla.com.  
+          Production is targeted for 2028. Final pricing has not been announced.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>Conceptual demo inspired by the official Tesla Roadster page · Not affiliated with Tesla, Inc.</p>
+    <p style="margin-top:8px;">Images used are from public news coverage of the October 2026 reveal for demonstration purposes.</p>
+  </footer>
+
+  <script>
+    function selectTrim(trim) {
+      document.getElementById('trim').value = trim;
+      document.getElementById('reserve').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const trim = document.getElementById('trim').value;
+      alert(`Thank you, ${name}.\n\nYour interest in the Roadster ${trim} has been noted.\n\nThis is a demo site. Please visit the official Tesla website to place a real reservation.`);
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
