@@ -24,7 +24,15 @@
       overflow-x: hidden;
     }
 
-    /* ===== NAV ===== */
+    /* Hide Tawk.to bubble by default */
+    #tawkchat-minified-box,
+    .tawk-min-container,
+    .widget-visible {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -38,11 +46,7 @@
       backdrop-filter: blur(12px);
     }
 
-    .logo {
-      font-weight: 600;
-      font-size: 1.15rem;
-      letter-spacing: 1px;
-    }
+    .logo { font-weight: 600; font-size: 1.15rem; letter-spacing: 1px; }
 
     .nav-right a {
       color: var(--text);
@@ -52,7 +56,6 @@
       margin-left: 24px;
     }
 
-    /* ===== HERO ===== */
     .hero {
       height: 100vh;
       min-height: 700px;
@@ -95,22 +98,9 @@
       flex-wrap: wrap;
     }
 
-    .stat {
-      text-align: center;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-
-    .stat span {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+    .stat { text-align: center; }
+    .stat strong { display: block; font-size: 1.8rem; font-weight: 600; }
+    .stat span { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
     .btn {
       display: inline-block;
@@ -125,7 +115,6 @@
       text-decoration: none;
       transition: background 0.2s;
     }
-
     .btn:hover { background: #e60000; }
 
     .btn-outline {
@@ -133,10 +122,8 @@
       border: 2px solid white;
       margin-left: 12px;
     }
-
     .btn-outline:hover { background: rgba(255,255,255,0.1); }
 
-    /* ===== SECTIONS ===== */
     section {
       padding: 100px 24px;
       max-width: 1200px;
@@ -158,7 +145,6 @@
       font-size: 1.05rem;
     }
 
-    /* Full-width image blocks */
     .full-image {
       width: 100%;
       height: 70vh;
@@ -183,7 +169,6 @@
       margin-bottom: 8px;
     }
 
-    /* Trims */
     .trims {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -204,26 +189,11 @@
       display: block;
     }
 
-    .trim-body {
-      padding: 28px;
-    }
+    .trim-body { padding: 28px; }
+    .trim-body h3 { font-size: 1.4rem; margin-bottom: 6px; }
+    .trim-body .tag { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
 
-    .trim-body h3 {
-      font-size: 1.4rem;
-      margin-bottom: 6px;
-    }
-
-    .trim-body .tag {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-
-    .trim-body ul {
-      list-style: none;
-      margin-bottom: 24px;
-    }
-
+    .trim-body ul { list-style: none; margin-bottom: 24px; }
     .trim-body li {
       display: flex;
       justify-content: space-between;
@@ -237,7 +207,6 @@
       font-weight: 600;
       margin-bottom: 4px;
     }
-
     .deposit small {
       display: block;
       font-size: 0.8rem;
@@ -246,27 +215,23 @@
       margin-bottom: 20px;
     }
 
-    /* Specs table */
     .specs-table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
     }
-
     .specs-table th,
     .specs-table td {
       padding: 16px 20px;
       text-align: left;
       border-bottom: 1px solid #222;
     }
-
     .specs-table th {
       color: var(--muted);
       font-weight: 500;
       width: 40%;
     }
 
-    /* Reservation */
     .reserve-box {
       max-width: 520px;
       margin: 0 auto;
@@ -276,10 +241,7 @@
       padding: 40px;
     }
 
-    .form-group {
-      margin-bottom: 20px;
-    }
-
+    .form-group { margin-bottom: 20px; }
     label {
       display: block;
       font-size: 0.85rem;
@@ -297,7 +259,6 @@
       font-size: 1rem;
       font-family: inherit;
     }
-
     input:focus, select:focus {
       outline: none;
       border-color: var(--tesla-red);
@@ -327,7 +288,6 @@
 </head>
 <body>
 
-  <!-- Nav -->
   <nav>
     <div class="logo">TESLA</div>
     <div class="nav-right">
@@ -337,7 +297,6 @@
     </div>
   </nav>
 
-  <!-- HERO - matches original Tesla style -->
   <section class="hero">
     <div class="hero-content">
       <h1>Roadster</h1>
@@ -362,23 +321,20 @@
     </div>
   </section>
 
-  <!-- Dramatic full-width image -->
   <div class="full-image" style="background-image: url('https://electronmotion.com/wp-content/uploads/2026/10/tesla-roadster-flying-over-lineup-1920.jpg');">
     <div class="caption">
       <h2>Beyond Physics</h2>
-      <p>Cold-gas thrusters. Active aero. Multi-mode suction. The quickest production car ever made.</p>
+      <p>Cold-gas thrusters. Active aero. Multi-mode suction.</p>
     </div>
   </div>
 
-  <!-- Trims -->
   <section id="trims">
     <h2 class="section-title">Choose Your Configuration</h2>
     <p class="section-sub">Performance is available for reservation. Thrust is limited. Rocket is invite-only.</p>
 
     <div class="trims">
-      <!-- Performance -->
       <div class="trim-card">
-        <img src="https://superchargeddaily.com/assets/roadster-studio/finale-1920w.webp" alt="Tesla Roadster Performance - studio white">
+        <img src="https://superchargeddaily.com/assets/roadster-studio/finale-1920w.webp" alt="Performance">
         <div class="trim-body">
           <h3>Performance</h3>
           <div class="tag">Road Ready · 2 seats</div>
@@ -393,9 +349,8 @@
         </div>
       </div>
 
-      <!-- Thrust -->
       <div class="trim-card">
-        <img src="https://www.reuters.com/resizer/v2/EP7IZC4E5VKGLGNTHMX4UBB7OM.jpg?auth=d8a0b34256182117d505d5b9d97a47797efd303e47c56ea180e3aa1363e958a7&height=1005&width=1920&quality=80&smart=true" alt="Tesla Roadster Thrust in flight">
+        <img src="https://www.reuters.com/resizer/v2/EP7IZC4E5VKGLGNTHMX4UBB7OM.jpg?auth=d8a0b34256182117d505d5b9d97a47797efd303e47c56ea180e3aa1363e958a7&height=1005&width=1920&quality=80&smart=true" alt="Thrust">
         <div class="trim-body">
           <h3>Thrust</h3>
           <div class="tag">Race Ready · Limited</div>
@@ -410,9 +365,8 @@
         </div>
       </div>
 
-      <!-- Rocket -->
       <div class="trim-card">
-        <img src="https://techcrunch.com/wp-content/uploads/2026/10/tesla-roadster-2-fly.jpg?resize=1200,877" alt="Tesla Roadster Rocket mid-air">
+        <img src="https://techcrunch.com/wp-content/uploads/2026/10/tesla-roadster-2-fly.jpg?resize=1200,877" alt="Rocket">
         <div class="trim-body">
           <h3>Rocket</h3>
           <div class="tag">Air Ready · Invite Only</div>
@@ -429,38 +383,34 @@
     </div>
   </section>
 
-  <!-- Another full image -->
   <div class="full-image" style="background-image: url('https://carglossary.com/media/cars/Tesla/roadster/HVagHRRXUAA7kaq.jpg');">
     <div class="caption">
       <h2>Designed for the Extremes</h2>
-      <p>Angular aerospace form language inspired by the SR-71 and F-35. Hidden headlights. Full-width light bar. Active rear wing.</p>
+      <p>Angular aerospace form language. Hidden headlights. Full-width light bar.</p>
     </div>
   </div>
 
-  <!-- Specs -->
   <section id="specs">
     <h2 class="section-title">Specifications</h2>
-    <p class="section-sub">Preliminary figures from the October 2026 reveal. Final production specifications subject to change.</p>
+    <p class="section-sub">Preliminary figures from the October 2026 reveal.</p>
 
     <table class="specs-table">
       <tr><th>Power</th><td>Over 1 MW (≈ 1,341 hp)</td></tr>
       <tr><th>Range</th><td>Over 300 miles</td></tr>
       <tr><th>Top Speed</th><td>Over 230 mph</td></tr>
       <tr><th>0-60 mph</th><td>Under 1.6 s (Performance) · Under 0.9 s (Thrust) · Under 0.59 s (Rocket)</td></tr>
-      <tr><th>Drive</th><td>Rear-wheel drive, dual motor, torque vectoring</td></tr>
-      <tr><th>Battery</th><td>High-voltage architecture (800–1000 V)</td></tr>
+      <tr><th>Drive</th><td>Rear-wheel drive, dual motor</td></tr>
       <tr><th>Production</th><td>Target 2028 · Giga Texas</td></tr>
       <tr><th>Price</th><td>Not yet announced</td></tr>
     </table>
   </section>
 
-  <!-- Reservation -->
   <section id="reserve" style="background:#0a0a0a; padding:100px 24px;">
     <h2 class="section-title">Reserve Your Roadster</h2>
-    <p class="section-sub">Secure your place in line. Deposits are fully refundable until a final vehicle purchase agreement is signed.</p>
+    <p class="section-sub">Submit your request and a specialist will assist you instantly in live chat.</p>
 
     <div class="reserve-box">
-      <form onsubmit="handleSubmit(event)">
+      <form id="reserveForm">
         <div class="form-group">
           <label>Configuration</label>
           <select id="trim" required>
@@ -488,20 +438,41 @@
             <option value="Other">Other</option>
           </select>
         </div>
-        <button type="submit" class="btn" style="width:100%; margin-top:10px;">Continue</button>
+
+        <button type="submit" class="btn" style="width:100%; margin-top:10px;">
+          Submit Request
+        </button>
+
         <p class="disclaimer">
-          This is a conceptual demonstration only. No real payment is processed and no reservation is created.  
-          Official reservations are available exclusively on Tesla.com.  
-          Production is targeted for 2028. Final pricing has not been announced.
+          After submitting, live chat will open automatically so a specialist can assist you with your Roadster reservation.
         </p>
       </form>
     </div>
   </section>
 
   <footer>
-    <p>Conceptual demo inspired by the official Tesla Roadster page · Not affiliated with Tesla, Inc.</p>
-    <p style="margin-top:8px;">Images used are from public news coverage of the October 2026 reveal for demonstration purposes.</p>
+    <p>Conceptual demo · Not affiliated with Tesla, Inc.</p>
   </footer>
+
+  <!-- Tawk.to Script -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+
+    Tawk_API.onLoad = function(){
+      // Hide the widget as soon as it loads
+      Tawk_API.hideWidget();
+    };
+
+    (function(){
+      var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/6b05fa792f329f3d0bdf7d6f/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
 
   <script>
     function selectTrim(trim) {
@@ -509,13 +480,49 @@
       document.getElementById('reserve').scrollIntoView({ behavior: 'smooth' });
     }
 
-    function handleSubmit(e) {
+    document.getElementById('reserveForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = document.getElementById('name').value;
-      const trim = document.getElementById('trim').value;
-      alert(`Thank you, ${name}.\n\nYour interest in the Roadster ${trim} has been noted.\n\nThis is a demo site. Please visit the official Tesla website to place a real reservation.`);
-      e.target.reset();
-    }
+
+      const name  = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const trim  = document.getElementById('trim').value;
+
+      const firstMessage = `Hi, I'm interested in the Tesla Roadster ${trim}.\n\nName: ${name}\nEmail: ${email}`;
+
+      // Show + open the chat
+      if (typeof Tawk_API !== 'undefined') {
+        // Set visitor info
+        Tawk_API.visitor = {
+          name: name,
+          email: email
+        };
+
+        // Show the widget and maximize it
+        Tawk_API.showWidget();
+        Tawk_API.maximize();
+
+        // Try to auto-send the first message (works on most accounts)
+        setTimeout(function() {
+          // Method 1: Official way (if available)
+          if (typeof Tawk_API.addEvent === 'function') {
+            Tawk_API.addEvent('reservation-request', {
+              trim: trim,
+              name: name,
+              email: email
+            });
+          }
+
+          // Method 2: Force focus and common workaround
+          // Some accounts support this:
+          if (window.$_Tawk && $_Tawk.sendMessage) {
+            $_Tawk.sendMessage(firstMessage);
+          }
+        }, 800);
+      } else {
+        // Fallback if Tawk hasn't loaded yet
+        alert('Connecting you to live chat...\n\n' + firstMessage);
+      }
+    });
   </script>
 </body>
 </html>
